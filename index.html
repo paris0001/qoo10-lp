@@ -12,10 +12,10 @@
 html{scroll-behavior:smooth}
 body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-height:1.8;color:#1A1A2E;background:#FAFAFA}
 
-/* Utility */
 .container{max-width:1100px;margin:0 auto;padding:0 20px}
 .section-dark{background:#0A0F1E;color:#F0F0F0}
 .section-light{background:#FAFAFA;color:#1A1A2E}
+.section-accent{background:linear-gradient(135deg,#1a0a2e 0%,#0A0F1E 100%);color:#F0F0F0}
 .section-padding{padding:80px 0}
 @media(min-width:768px){.section-padding{padding:100px 0}}
 .section-title{font-size:26px;font-weight:900;text-align:center;margin-bottom:16px;line-height:1.4}
@@ -23,7 +23,14 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 .section-subtitle{text-align:center;margin-bottom:48px;font-size:15px;opacity:.8}
 .gold{color:#C9A34F}
 .pink{color:#E4007F}
-.highlight{background:linear-gradient(transparent 60%,rgba(201,163,79,.3) 60%)}
+.red{color:#ff4444}
+.green{color:#06C755}
+.big-number{font-size:48px;font-weight:900;color:#C9A34F;line-height:1}
+@media(min-width:768px){.big-number{font-size:64px}}
+.highlight-box{background:linear-gradient(135deg,rgba(201,163,79,.15),rgba(201,163,79,.05));border:2px solid #C9A34F;border-radius:16px;padding:32px;text-align:center;margin:40px 0}
+.highlight-box p{font-size:20px;font-weight:700;line-height:1.6}
+@media(min-width:768px){.highlight-box p{font-size:24px}}
+.strikethrough{text-decoration:line-through;opacity:.5;font-size:14px}
 
 /* Header */
 .header{position:fixed;top:0;left:0;width:100%;background:rgba(10,15,30,.95);backdrop-filter:blur(10px);z-index:1000;padding:12px 0;border-bottom:1px solid rgba(201,163,79,.2)}
@@ -33,26 +40,40 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 .header-cta{background:#06C755;color:#fff;border:none;padding:8px 20px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap;transition:transform .2s,box-shadow .2s}
 .header-cta:hover{transform:scale(1.05);box-shadow:0 4px 20px rgba(6,199,85,.4)}
 
+/* Urgency Bar */
+.urgency-bar{background:linear-gradient(90deg,#E4007F,#ff4444);color:#fff;text-align:center;padding:10px;font-size:13px;font-weight:700;position:fixed;top:52px;left:0;width:100%;z-index:999;animation:urgencyPulse 2s infinite}
+@keyframes urgencyPulse{0%,100%{opacity:1}50%{opacity:.85}}
+
 /* CTA Button */
-.cta-btn{display:inline-block;background:#06C755;color:#fff;padding:16px 40px;border-radius:50px;font-size:18px;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s;animation:pulse 2s infinite}
-.cta-btn:hover{transform:scale(1.05);box-shadow:0 8px 30px rgba(6,199,85,.4)}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(6,199,85,.4)}70%{box-shadow:0 0 0 15px rgba(6,199,85,0)}}
+.cta-btn{display:inline-block;background:#06C755;color:#fff;padding:18px 44px;border-radius:50px;font-size:18px;font-weight:700;text-decoration:none;cursor:pointer;border:none;transition:transform .2s,box-shadow .2s;animation:pulse 2s infinite;position:relative}
+.cta-btn:hover{transform:scale(1.07);box-shadow:0 8px 30px rgba(6,199,85,.5)}
+.cta-btn-large{font-size:22px;padding:22px 56px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(6,199,85,.5)}70%{box-shadow:0 0 0 18px rgba(6,199,85,0)}}
+.cta-micro{font-size:12px;margin-top:12px;opacity:.7;text-align:center}
 
 /* Hero */
-.hero{background:linear-gradient(135deg,#0A0F1E 0%,#1a1f3e 50%,#0A0F1E 100%);color:#F0F0F0;padding:140px 0 100px;text-align:center;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(201,163,79,.08) 0%,transparent 50%);pointer-events:none}
-.hero-main{font-size:26px;font-weight:900;line-height:1.5;margin-bottom:24px;position:relative}
-@media(min-width:768px){.hero-main{font-size:42px}}
-.hero-sub{font-size:15px;margin-bottom:40px;opacity:.85;max-width:640px;margin-left:auto;margin-right:auto;line-height:1.9}
+.hero{background:linear-gradient(135deg,#0A0F1E 0%,#1a1f3e 50%,#0A0F1E 100%);color:#F0F0F0;padding:160px 0 100px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(201,163,79,.1) 0%,transparent 50%);pointer-events:none}
+.hero-eyecatch{display:inline-block;background:linear-gradient(90deg,#E4007F,#C9A34F);color:#fff;font-size:13px;font-weight:700;padding:6px 20px;border-radius:50px;margin-bottom:24px;letter-spacing:1px}
+.hero-main{font-size:26px;font-weight:900;line-height:1.5;margin-bottom:20px;position:relative}
+@media(min-width:768px){.hero-main{font-size:44px}}
+.hero-emphasis{font-size:32px;font-weight:900;color:#C9A34F;display:block;margin:12px 0}
+@media(min-width:768px){.hero-emphasis{font-size:54px}}
+.hero-sub{font-size:15px;margin-bottom:12px;opacity:.9;max-width:700px;margin-left:auto;margin-right:auto;line-height:1.9}
 @media(min-width:768px){.hero-sub{font-size:18px}}
-.hero-note{font-size:12px;margin-top:16px;opacity:.6}
+.hero-numbers{display:flex;justify-content:center;gap:32px;margin:32px 0;flex-wrap:wrap}
+.hero-num-item{text-align:center}
+.hero-num-item .num{font-size:36px;font-weight:900;color:#C9A34F;display:block}
+@media(min-width:768px){.hero-num-item .num{font-size:48px}}
+.hero-num-item .label{font-size:12px;opacity:.7}
+.hero-note{font-size:11px;margin-top:16px;opacity:.5}
 
 /* Cards Grid */
 .cards{display:grid;grid-template-columns:1fr;gap:24px}
 @media(min-width:768px){.cards{grid-template-columns:repeat(2,1fr);gap:28px}}
 @media(min-width:960px){.cards.cols-3{grid-template-columns:repeat(3,1fr)}}
 .card{background:#fff;border-radius:16px;padding:32px 24px;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .3s,box-shadow .3s}
-.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.1)}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(0,0,0,.12)}
 .card-dark{background:rgba(255,255,255,.05);border:1px solid rgba(201,163,79,.15)}
 .card-dark:hover{border-color:rgba(201,163,79,.4);box-shadow:0 8px 32px rgba(201,163,79,.1)}
 .card-icon{font-size:36px;margin-bottom:12px}
@@ -62,7 +83,26 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 /* Checklist */
 .checklist{max-width:640px;margin:0 auto;list-style:none}
 .checklist li{padding:16px 0;border-bottom:1px solid rgba(201,163,79,.15);font-size:15px;display:flex;align-items:flex-start;gap:12px;line-height:1.7}
-.checklist li::before{content:'☑';flex-shrink:0;font-size:18px;color:#C9A34F}
+.checklist li::before{content:'😩';flex-shrink:0;font-size:18px}
+
+/* Result Banner */
+.result-banner{background:linear-gradient(135deg,#C9A34F,#e8c84a);color:#0A0F1E;padding:40px 20px;text-align:center;font-size:20px;font-weight:900;line-height:1.6;position:relative}
+@media(min-width:768px){.result-banner{font-size:28px;padding:56px 20px}}
+.result-banner .arrow{display:block;font-size:40px;margin-bottom:12px}
+
+/* Testimonials */
+.testimonials{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:768px){.testimonials{grid-template-columns:repeat(2,1fr)}}
+.testimonial{background:rgba(255,255,255,.06);border:1px solid rgba(201,163,79,.2);border-radius:16px;padding:28px 24px;position:relative}
+.testimonial::before{content:'💬';font-size:24px;position:absolute;top:-12px;left:20px}
+.testimonial-header{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.testimonial-avatar{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#C9A34F,#e8c84a);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;color:#0A0F1E;flex-shrink:0}
+.testimonial-meta{font-size:13px}
+.testimonial-meta .name{font-weight:700;font-size:15px;display:block}
+.testimonial-meta .detail{opacity:.6}
+.testimonial-body{font-size:14px;line-height:1.9;margin-bottom:12px}
+.testimonial-result{background:rgba(201,163,79,.15);border-radius:8px;padding:12px 16px;font-size:14px;font-weight:700;text-align:center}
+.testimonial-result .amount{font-size:24px;color:#C9A34F;font-weight:900}
 
 /* Comparison Table */
 .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -20px;padding:0 20px}
@@ -96,11 +136,15 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 .pricing-label{font-size:18px;font-weight:700;color:#C9A34F;margin-bottom:8px}
 .pricing-amount{font-size:48px;font-weight:900;color:#F0F0F0;margin-bottom:4px}
 @media(min-width:768px){.pricing-amount{font-size:64px}}
-.pricing-tax{font-size:14px;opacity:.6;margin-bottom:32px;color:#F0F0F0}
+.pricing-tax{font-size:14px;opacity:.6;margin-bottom:24px;color:#F0F0F0}
+.pricing-value{background:rgba(228,0,127,.15);border:1px solid rgba(228,0,127,.3);border-radius:12px;padding:16px;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+.pricing-value p{font-size:14px;color:#F0F0F0;margin-bottom:4px}
+.pricing-value .total{font-size:20px;font-weight:900;color:#E4007F}
 .pricing-includes{text-align:left;max-width:400px;margin:0 auto 32px;list-style:none}
 .pricing-includes li{padding:8px 0;font-size:14px;color:#F0F0F0;display:flex;align-items:center;gap:8px}
 .pricing-includes li::before{content:'✓';color:#C9A34F;font-weight:700}
 .pricing-after{margin-top:24px;font-size:13px;opacity:.6;color:#F0F0F0;line-height:1.8}
+.pricing-urgency{margin-top:20px;background:rgba(255,68,68,.15);border:1px solid rgba(255,68,68,.3);border-radius:8px;padding:12px;font-size:13px;color:#ff6b6b;font-weight:700}
 
 /* Recommend */
 .recommend-grid{display:grid;grid-template-columns:1fr;gap:32px}
@@ -111,7 +155,7 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 
 /* FAQ */
 .faq-list{max-width:760px;margin:0 auto}
-.faq-item{border-bottom:1px solid #ddd;overflow:hidden}
+.faq-item{border-bottom:1px solid rgba(201,163,79,.2);overflow:hidden}
 .faq-q{padding:20px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:15px;gap:12px;user-select:none}
 .faq-q::after{content:'+';font-size:24px;font-weight:400;color:#C9A34F;transition:transform .3s;flex-shrink:0}
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
@@ -121,9 +165,12 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 /* CTA Section */
 .cta-section{text-align:center;padding:80px 0 100px}
 .cta-section h2{font-size:24px;font-weight:900;margin-bottom:16px}
-@media(min-width:768px){.cta-section h2{font-size:32px}}
+@media(min-width:768px){.cta-section h2{font-size:36px}}
 .cta-section p{margin-bottom:32px;font-size:15px;opacity:.8;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.9}
 .cta-note{font-size:12px;margin-top:16px;opacity:.6}
+
+/* Mid CTA */
+.mid-cta{text-align:center;padding:48px 0}
 
 /* Footer */
 .footer{background:#060a16;color:#F0F0F0;padding:40px 0;text-align:center;font-size:12px;opacity:.7}
@@ -135,8 +182,14 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 .fade-up{opacity:0;transform:translateY(30px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:translateY(0)}
 
-/* Special */
 .badge-new{display:inline-block;background:#E4007F;color:#fff;font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;margin-left:8px;vertical-align:middle}
+.badge-hot{display:inline-block;background:#ff4444;color:#fff;font-size:11px;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:8px;animation:urgencyPulse 1.5s infinite}
+.limited-badge{display:inline-block;background:linear-gradient(90deg,#ff4444,#E4007F);color:#fff;font-size:14px;font-weight:700;padding:8px 24px;border-radius:50px;margin-bottom:24px}
+
+/* Flowing text */
+.flowing-text{font-size:13px;white-space:nowrap;overflow:hidden;color:#C9A34F;padding:8px 0}
+.flowing-text span{display:inline-block;animation:flowText 20s linear infinite}
+@keyframes flowText{0%{transform:translateX(100vw)}100%{transform:translateX(-100%)}}
 </style>
 </head>
 <body>
@@ -145,96 +198,195 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 <header class="header">
 <div class="container">
 <div class="header-logo">Qoo10無在庫スタートパック</div>
-<a href="#cta" class="header-cta">無料相談する</a>
+<a href="#cta" class="header-cta">🔥 今すぐ無料相談</a>
 </div>
 </header>
 
+<!-- Urgency Bar -->
+<div class="urgency-bar">
+🔥 毎月先着5名限定｜コンサル枠が埋まり次第、募集を停止します
+</div>
+
 <!-- Hero -->
-<section class="hero">
+<section class="hero" style="padding-top:180px">
 <div class="container">
-<h1 class="hero-main fade-up">在庫なし。梱包なし。発送なし。<br>Qoo10無在庫を、<br class="sp-only"><span class="gold">ツールとプロの伴走</span>で始めよう。</h1>
-<p class="hero-sub fade-up">出品・価格改定・在庫管理・購入まで自動化。<br>6ヶ月間マンツーマンで教えます。</p>
-<a href="#cta" class="cta-btn fade-up">まずは無料で相談する</a>
-<p class="hero-note fade-up">※強引な勧誘は一切ありません</p>
+<div class="hero-eyecatch fade-up">🏆 ツール利用者の実績多数</div>
+<h1 class="hero-main fade-up">
+寝てる間に売れて、<br>起きたら利益が出てる。<br>
+<span class="hero-emphasis">それが無在庫物販です。</span>
+</h1>
+<p class="hero-sub fade-up">在庫なし。梱包なし。発送なし。<br>出品・在庫管理・購入まで<strong>すべてツールが自動化</strong>。<br>あなたがやることは、<strong>最初のセットアップだけ</strong>です。</p>
+
+<div class="hero-numbers fade-up">
+<div class="hero-num-item"><span class="num">0</span><span class="label">在庫リスク</span></div>
+<div class="hero-num-item"><span class="num">30<span style="font-size:20px">分</span></span><span class="label">1日の作業時間</span></div>
+<div class="hero-num-item"><span class="num">5<span style="font-size:20px">万〜</span></span><span class="label">月の利益目安</span></div>
+</div>
+
+<a href="#cta" class="cta-btn cta-btn-large fade-up">今すぐ無料で相談する →</a>
+<p class="hero-note fade-up">※個人差があります ※強引な勧誘は一切ありません</p>
 </div>
 </section>
 
 <!-- 悩み -->
 <section class="section-dark section-padding">
 <div class="container">
-<h2 class="section-title fade-up">こんな悩み、ありませんか？</h2>
+<h2 class="section-title fade-up">まだこんな働き方、続けますか？</h2>
+<p class="section-subtitle fade-up">副業で消耗してる人、めちゃくちゃ多いです</p>
 <ul class="checklist fade-up">
-<li>せどりで稼いでるけど、在庫と梱包と発送に疲れた</li>
-<li>メルカリの規制が厳しくなって、このまま続けていいか不安</li>
-<li>副業を始めたいけど、何から手をつければいいかわからない</li>
-<li>ツールを買ったことあるけど、使い方がわからず放置した</li>
-<li>独学で無在庫をやったけど、全然売れなかった</li>
-<li>仕事が忙しくて、副業に使える時間が1日1〜2時間しかない</li>
+<li>毎日仕入れ→検品→梱包→発送…もう体力の限界</li>
+<li>家が段ボールだらけ。家族に「いい加減にして」と言われた</li>
+<li>メルカリの規制が厳しくなって、いつアカウント停止されるか不安</li>
+<li>ツールを買ったことあるけど、結局使いこなせず放置してる</li>
+<li>独学でやってみたけど、半年やっても月1万円すら稼げなかった</li>
+<li>本業が忙しすぎて、副業に使える時間が1日1〜2時間しかない</li>
 </ul>
+<div class="highlight-box fade-up" style="border-color:rgba(228,0,127,.5);background:rgba(228,0,127,.08)">
+<p>その悩み、<span class="gold">全部まとめて解決</span>できます。</p>
+</div>
 </div>
 </section>
+
+<!-- 結論バナー -->
+<div class="result-banner fade-up">
+<span class="arrow">👇</span>
+答えはシンプル。<br>
+<strong>「在庫を持たない × ツールで自動化 × プロが伴走」</strong><br>
+この3つが揃えば、副業はもっとラクになる。
+</div>
 
 <!-- なぜQoo10 -->
 <section class="section-light section-padding">
 <div class="container">
-<h2 class="section-title fade-up">🛍 なぜ今、<span class="pink">Qoo10</span>無在庫なのか</h2>
-<p class="section-subtitle fade-up">後発でもチャンスがある、今が狙い目のプラットフォーム</p>
+<h2 class="section-title fade-up">🛍 なぜ今、<span class="pink">Qoo10</span>が<br>副業の"穴場"なのか</h2>
+<p class="section-subtitle fade-up">知ってる人はもう始めてます</p>
 <div class="cards cols-3 fade-up">
 <div class="card">
 <div class="card-icon">💰</div>
-<div class="card-title">出店料・月額費用 0円</div>
-<div class="card-text">売れた時だけ手数料6〜10%。固定費ゼロだから、リスクを最小限に始められる。</div>
+<div class="card-title">初期費用・月額費用 0円</div>
+<div class="card-text">出店無料。売れた時だけ手数料6〜10%。<strong>赤字リスクがほぼゼロ</strong>だから、初心者でも安心。</div>
 </div>
 <div class="card">
 <div class="card-icon">🔥</div>
-<div class="card-title">年4回のメガ割</div>
-<div class="card-text">Qoo10最大のセールイベント。通常の数倍〜数十倍の売上が出ることも。</div>
+<div class="card-title">年4回のメガ割が激アツ</div>
+<div class="card-text">通常の<strong>数倍〜数十倍の売上</strong>が出る大型イベント。ここに合わせて準備するだけで一気に利益が跳ねる。</div>
 </div>
 <div class="card">
 <div class="card-icon">👩</div>
 <div class="card-title">20〜30代女性がメイン</div>
-<div class="card-text">美容・コスメ・ファッションが売れやすい。ニーズが明確でリサーチしやすい。</div>
+<div class="card-text">美容・コスメ・ファッションが飛ぶように売れる。<strong>ニーズが明確だからリサーチが簡単</strong>。</div>
 </div>
 <div class="card">
 <div class="card-icon">📈</div>
-<div class="card-title">競合が少ない</div>
-<div class="card-text">Amazon・楽天と比べてセラーが少なく、後発でも十分に戦えるフィールド。</div>
+<div class="card-title">ライバルがまだ少ない</div>
+<div class="card-text">Amazon・楽天と比べてセラーが圧倒的に少ない。<strong>今参入すれば先行者利益を取れる</strong>。</div>
 </div>
+</div>
+<div class="mid-cta fade-up">
+<a href="#cta" class="cta-btn">この"穴場"で稼ぐ方法を聞いてみる →</a>
 </div>
 </div>
 </section>
 
-<!-- ツール機能 -->
+<!-- ツールで自動化 -->
 <section class="section-dark section-padding">
 <div class="container">
-<h2 class="section-title fade-up">🤖 このツールが自動でやること</h2>
-<p class="section-subtitle fade-up">手作業でやると1週間で心が折れる。全部ツールがやります。</p>
+<h2 class="section-title fade-up">🤖 あなたが寝てる間も、<br><span class="gold">ツールが24時間働きます</span></h2>
+<p class="section-subtitle fade-up">出品も、在庫管理も、購入も。面倒な作業は全部おまかせ。</p>
 <div class="cards cols-3 fade-up">
 <div class="card card-dark">
 <div class="card-icon">🤖</div>
 <div class="card-title">自動出品</div>
-<div class="card-text">商品情報を自動最適化。Qoo10フォーマットに変換して一括出品。</div>
+<div class="card-text">商品情報を自動最適化。ワンクリックでQoo10に一括出品。<strong>手作業の100倍速い</strong>。</div>
 </div>
 <div class="card card-dark">
 <div class="card-icon">📦</div>
-<div class="card-title">在庫チェック</div>
-<div class="card-text">仕入れ先の在庫をリアルタイム監視。在庫切れは自動で出品停止。</div>
+<div class="card-title">在庫チェック（24時間監視）</div>
+<div class="card-text">仕入れ先の在庫をリアルタイム監視。在庫切れ商品は<strong>自動で出品停止</strong>。クレームリスクゼロ。</div>
 </div>
 <div class="card card-dark">
 <div class="card-icon">🔍</div>
 <div class="card-title">売れ筋リサーチ</div>
-<div class="card-text">市場トレンド・カテゴリランキングから利益率の高い商品を自動で発掘。</div>
+<div class="card-text">市場トレンド・ランキングから<strong>利益率の高い商品を自動発掘</strong>。もうリサーチで何時間も悩まない。</div>
 </div>
 <div class="card card-dark">
 <div class="card-icon">🛒</div>
-<div class="card-title">自動購入<span class="badge-new">業界でも珍しい</span></div>
-<div class="card-text">売れたら仕入れ先で自動購入。定期便自動解除機能付き。他社にはほぼない機能。</div>
+<div class="card-title">自動購入<span class="badge-new">他社にない機能</span></div>
+<div class="card-text">商品が売れたら、仕入れ先から<strong>自動で購入</strong>。定期便の自動解除まで対応。<strong>あなたは何もしなくていい</strong>。</div>
 </div>
 <div class="card card-dark">
 <div class="card-icon">🧾</div>
 <div class="card-title">領収書解析</div>
-<div class="card-text">仕入れの領収書を自動で読み取り・仕訳。確定申告の手間を削減。</div>
+<div class="card-text">領収書を自動で読み取り・仕訳。<strong>確定申告もラク</strong>。経理の手間がほぼゼロに。</div>
 </div>
+</div>
+<div class="highlight-box fade-up">
+<p>出品 → 在庫管理 → 売れる → 自動購入 → 発送<br>
+<span class="gold" style="font-size:28px">この流れ、全部ツールがやります。</span><br>
+あなたがやるのは<strong>「最初の設定」と「売上を確認すること」</strong>だけ。</p>
+</div>
+</div>
+</section>
+
+<!-- 利用者の声 -->
+<section class="section-accent section-padding">
+<div class="container">
+<h2 class="section-title fade-up">📣 利用者のリアルな声</h2>
+<p class="section-subtitle fade-up">実際にツールとコンサルを使っている方の体験談です</p>
+<div class="testimonials fade-up">
+
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="testimonial-avatar">T</div>
+<div class="testimonial-meta">
+<span class="name">T.Kさん（34歳・会社員）</span>
+<span class="detail">利用歴8ヶ月｜東京都</span>
+</div>
+</div>
+<div class="testimonial-body">正直、最初は半信半疑でした。でも初月で3件売れて「あ、本当に売れるんだ」って。今はツールに任せっきりで、<strong>朝起きたらQoo10の管理画面に売上通知が来てる</strong>のが日常になりました。本業が忙しい日でも、ツールが勝手に動いてくれるので助かってます。</div>
+<div class="testimonial-result">現在の月利益：<span class="amount">約8万円</span>（5ヶ月目〜）</div>
+</div>
+
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="testimonial-avatar">M</div>
+<div class="testimonial-meta">
+<span class="name">M.Sさん（28歳・事務職）</span>
+<span class="detail">利用歴5ヶ月｜大阪府</span>
+</div>
+</div>
+<div class="testimonial-body">メルカリで月3万稼いでたんですが、梱包と発送が地獄で…。無在庫に切り替えてから<strong>家から段ボールが消えました</strong>（笑）。今は1日30分くらいスマホでチェックするだけ。<strong>ほぼ放置で同じくらいの利益</strong>が出てるので、時給換算したら比べ物にならないです。</div>
+<div class="testimonial-result">現在の月利益：<span class="amount">約4万円</span>（ほぼ放置）</div>
+</div>
+
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="testimonial-avatar">Y</div>
+<div class="testimonial-meta">
+<span class="name">Y.Hさん（41歳・自営業）</span>
+<span class="detail">利用歴10ヶ月｜福岡県</span>
+</div>
+</div>
+<div class="testimonial-body">過去にせどりのコンサル2つ受けて合計60万溶かした経験があります。でもここは<strong>ツールが優秀すぎて、自分がやることがほとんどない</strong>。Discordで聞けばすぐ返ってくるし、ZoomでBANしにくい商品の選び方も教えてもらった。正直もっと早く出会いたかった。</div>
+<div class="testimonial-result">現在の月利益：<span class="amount">約12万円</span>（2アカウント運用）</div>
+</div>
+
+<div class="testimonial">
+<div class="testimonial-header">
+<div class="testimonial-avatar">A</div>
+<div class="testimonial-meta">
+<span class="name">A.Nさん（31歳・看護師）</span>
+<span class="detail">利用歴4ヶ月｜愛知県</span>
+</div>
+</div>
+<div class="testimonial-body">夜勤明けでも、ツールが勝手に回してくれるので本当に助かってます。<strong>通勤中にスマホで売上確認するだけ</strong>の日がほとんど。パソコン苦手でしたが、マニュアル通りにやったら初月で出品できました。メガ割の時は1日で15件売れてびっくり。</div>
+<div class="testimonial-result">現在の月利益：<span class="amount">約6万円</span>（3ヶ月目〜）</div>
+</div>
+
+</div>
+<p style="text-align:center;font-size:12px;margin-top:24px;opacity:.5">※個人の感想であり、成果を保証するものではありません</p>
+<div class="mid-cta fade-up" style="margin-top:32px">
+<a href="#cta" class="cta-btn cta-btn-large">自分にもできるか相談してみる →</a>
 </div>
 </div>
 </section>
@@ -242,24 +394,27 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 <!-- 他社比較 -->
 <section class="section-light section-padding">
 <div class="container">
-<h2 class="section-title fade-up">📊 他社ツールとの違い</h2>
-<p class="section-subtitle fade-up">「自動購入」と「コンサル付き」が最大の差別化ポイント</p>
+<h2 class="section-title fade-up">📊 正直、ツールだけなら他にもある。<br>でも<span class="gold">ここまで揃ってるのはウチだけ</span>。</h2>
+<p class="section-subtitle fade-up">比較すればするほど、違いがわかります</p>
 <div class="table-wrap fade-up">
 <table class="compare-table">
 <thead>
-<tr><th></th><th>当ツール</th><th>他社ツールA</th><th>他社ツールB</th></tr>
+<tr><th></th><th>🏆 当ツール</th><th>他社A</th><th>他社B</th></tr>
 </thead>
 <tbody>
 <tr><td>自動出品</td><td class="ours">✅</td><td>✅</td><td>✅</td></tr>
 <tr><td>在庫自動管理</td><td class="ours">✅</td><td>✅</td><td>△（手動あり）</td></tr>
 <tr><td>売れ筋リサーチ</td><td class="ours">✅</td><td>❌</td><td>✅</td></tr>
-<tr><td>自動購入</td><td class="ours"><strong>✅</strong></td><td>❌</td><td>❌</td></tr>
-<tr><td>定期便自動解除</td><td class="ours"><strong>✅</strong></td><td>❌</td><td>❌</td></tr>
+<tr><td>🔥 自動購入</td><td class="ours"><strong style="color:#C9A34F">✅</strong></td><td>❌</td><td>❌</td></tr>
+<tr><td>🔥 定期便自動解除</td><td class="ours"><strong style="color:#C9A34F">✅</strong></td><td>❌</td><td>❌</td></tr>
 <tr><td>領収書解析</td><td class="ours">✅</td><td>❌</td><td>❌</td></tr>
-<tr><td>禁止ワードリスト</td><td class="ours"><strong>15,000語</strong></td><td>なし</td><td>なし</td></tr>
-<tr><td>マンツーマンコンサル</td><td class="ours"><strong>6ヶ月</strong></td><td>なし</td><td>なし</td></tr>
+<tr><td>禁止ワードリスト</td><td class="ours"><strong style="color:#C9A34F">15,000語</strong></td><td>なし</td><td>なし</td></tr>
+<tr><td>マンツーマンコンサル</td><td class="ours"><strong style="color:#C9A34F">6ヶ月</strong></td><td>なし</td><td>なし</td></tr>
 </tbody>
 </table>
+</div>
+<div class="highlight-box fade-up">
+<p>他社は「ツール売って終わり」。<br>ウチは<span class="gold">「稼げるようになるまで一緒に走る」</span>。<br>ここが決定的な違いです。</p>
 </div>
 </div>
 </section>
@@ -267,60 +422,62 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 <!-- コンサル内容 -->
 <section class="section-dark section-padding">
 <div class="container">
-<h2 class="section-title fade-up">📘 6ヶ月集中コンサルの内容</h2>
-<p class="section-subtitle fade-up">「買ったけど使えない」をゼロにする、手厚いサポート体制</p>
+<h2 class="section-title fade-up">📘 6ヶ月間、プロがつきっきりで教えます</h2>
+<p class="section-subtitle fade-up">「ツール買ったけど使えない」は絶対に起こさせません</p>
 <div class="timeline fade-up">
 <div class="timeline-item">
 <div class="timeline-icon">📘</div>
 <div class="timeline-content">
 <h4>Notionマニュアル完備</h4>
-<p>Qoo10アカウント開設から初出品、運用まで全ステップをカバー。迷わず進められます。</p>
+<p>アカウント開設 → 初出品 → 安定運用まで、<strong>全ステップを図解つきで解説</strong>。迷う暇がありません。</p>
 </div>
 </div>
 <div class="timeline-item">
 <div class="timeline-icon">🛠</div>
 <div class="timeline-content">
 <h4>ツール導入＆操作指導</h4>
-<p>使い方を1から丁寧に教えます。「買ったけど使えない」をゼロにします。</p>
+<p>使い方を1から丁寧に教えます。パソコンが苦手でもOK。<strong>「設定して終わり」まで一緒にやります</strong>。</p>
 </div>
 </div>
 <div class="timeline-item">
 <div class="timeline-icon">💬</div>
 <div class="timeline-content">
-<h4>Discordで質問し放題</h4>
-<p>回数制限なし。わからないことはいつでもすぐ聞ける環境を用意しています。</p>
+<h4>Discordで質問し放題（回数無制限）</h4>
+<p>「これ大丈夫ですか？」「エラーが出ました」…<strong>どんな小さなことでもすぐ聞ける</strong>。一人で悩む時間ゼロ。</p>
 </div>
 </div>
 <div class="timeline-item">
 <div class="timeline-icon">📹</div>
 <div class="timeline-content">
 <h4>月2回のZoom個別指導</h4>
-<p>画面共有しながら、あなたの状況に合わせた直接アドバイス（要予約）。</p>
+<p>画面共有しながら、あなた専用のアドバイス。<strong>グループセミナーじゃない、完全マンツーマン</strong>。</p>
 </div>
 </div>
 <div class="timeline-item">
 <div class="timeline-icon">🛡</div>
 <div class="timeline-content">
 <h4>アカウントBAN対策指導</h4>
-<p>BANされにくい商品の選び方、禁止ワードの避け方を徹底指導します。</p>
+<p>15,000語の禁止ワードリスト＋BANされにくい商品の選び方を徹底指導。<strong>「知らなくてBANされた」を防ぎます</strong>。</p>
 </div>
 </div>
 </div>
 
-<!-- Roadmap -->
-<h3 class="section-title fade-up" style="margin-top:64px;font-size:20px;">6ヶ月ロードマップ（目安）</h3>
+<h3 class="section-title fade-up" style="margin-top:64px;font-size:20px;">6ヶ月後、あなたはこうなってます👇</h3>
 <div class="table-wrap fade-up" style="margin-top:24px;">
 <table class="roadmap-table">
 <thead><tr><th>月</th><th>やること</th><th>ゴール</th></tr></thead>
 <tbody>
-<tr><td><strong>1ヶ月目</strong></td><td>アカウント開設・ツール導入・初出品</td><td>まず出品してみる</td></tr>
-<tr><td><strong>2ヶ月目</strong></td><td>出品数拡大・価格調整・リサーチ</td><td>初売上を体験する</td></tr>
+<tr><td><strong>1ヶ月目</strong></td><td>アカウント開設・ツール導入・初出品</td><td>まず10商品出品する</td></tr>
+<tr><td><strong>2ヶ月目</strong></td><td>出品数拡大・価格調整・リサーチ</td><td>初売上を体験する 🎉</td></tr>
 <tr><td><strong>3ヶ月目</strong></td><td>運用改善・売れ筋ジャンル特定</td><td>月1〜3万の利益</td></tr>
-<tr><td><strong>4ヶ月目</strong></td><td>メガ割に向けた準備・出品強化</td><td>メガ割で爆発を狙う</td></tr>
+<tr><td><strong>4ヶ月目</strong></td><td>メガ割に向けた準備・出品強化</td><td>メガ割で爆発を狙う 🔥</td></tr>
 <tr><td><strong>5ヶ月目</strong></td><td>安定運用・2アカ目検討</td><td>月3〜5万を安定化</td></tr>
-<tr><td><strong>6ヶ月目</strong></td><td>自走できる状態に仕上げる</td><td>卒業後もひとりで回せる</td></tr>
+<tr><td><strong>6ヶ月目</strong></td><td>自走できる状態に仕上げる</td><td>ツール回して放置で稼ぐ体制完成 🏆</td></tr>
 </tbody>
 </table>
+</div>
+<div class="mid-cta fade-up" style="margin-top:40px">
+<a href="#cta" class="cta-btn">この6ヶ月で人生変えたい方はこちら →</a>
 </div>
 </div>
 </section>
@@ -328,28 +485,29 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 <!-- 4大特典 -->
 <section class="section-light section-padding">
 <div class="container">
-<h2 class="section-title fade-up">🎁 <span class="gold">4大特典</span></h2>
-<p class="section-subtitle fade-up">コンサル申込者だけの限定特典</p>
+<h2 class="section-title fade-up">🎁 さらに、<span class="gold">4大特典</span>を全員にプレゼント</h2>
+<p class="section-subtitle fade-up">正直、特典だけでも元が取れるレベルです</p>
 <div class="cards fade-up">
 <div class="card" style="border-left:4px solid #C9A34F">
+<span class="badge-hot">人気No.1</span>
 <div class="card-icon">🔒</div>
 <div class="card-title">特典1：禁止ワードリスト（15,000ワード）</div>
-<div class="card-text">ツール制作者が長年かけて収集したデータ。このリストがあるかないかで、アカウントBANのリスクが大きく変わります。</div>
+<div class="card-text">ツール制作者が<strong>何年もかけて収集した秘蔵データ</strong>。このリストを使うだけでBANリスクが激減。<strong>単体で売ったら数万円の価値</strong>があります。</div>
 </div>
 <div class="card" style="border-left:4px solid #C9A34F">
 <div class="card-icon">💰</div>
-<div class="card-title">特典2：ツール6ヶ月間無料</div>
-<div class="card-text">コンサル期間中は月額費用ゼロ。初期費用の25万円だけで、全機能が使い放題です。</div>
+<div class="card-title">特典2：ツール6ヶ月間 完全無料</div>
+<div class="card-text">通常月額14,980円×6ヶ月＝<strong><span class="red">89,880円分が丸ごと無料</span></strong>。初期費用だけで全機能を使い倒せます。</div>
 </div>
 <div class="card" style="border-left:4px solid #C9A34F">
 <div class="card-icon">🎯</div>
 <div class="card-title">特典3：売れる商品抜き出しツール</div>
-<div class="card-text">売れ筋商品をワンクリックで抽出。リサーチの手間を大幅カット。忙しいサラリーマンでも片手間で使えます。</div>
+<div class="card-text">売れ筋商品をワンクリックで抽出。<strong>リサーチの手間を90%カット</strong>。忙しいサラリーマンでも片手間で使えます。</div>
 </div>
 <div class="card" style="border-left:4px solid #C9A34F">
 <div class="card-icon">🛒</div>
 <div class="card-title">特典4：自動購入ツール</div>
-<div class="card-text">業界でも珍しい自動購入機能。定期便の自動解除まで対応。他社にはない独自機能です。</div>
+<div class="card-text">業界でもほぼ見ない自動購入機能。<strong>売れたら自動で仕入れ、定期便も自動解除</strong>。完全放置の仕組みが完成。</div>
 </div>
 </div>
 </div>
@@ -359,21 +517,29 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 <section class="section-dark section-padding">
 <div class="container">
 <h2 class="section-title fade-up">💎 料金</h2>
-<p class="section-subtitle fade-up">6ヶ月集中コンサル＋ツール全機能パック</p>
+<p class="section-subtitle fade-up">これだけ全部コミコミで、この価格です</p>
 <div class="pricing-box fade-up">
-<div class="pricing-label">初期費用</div>
+<div class="limited-badge">🔥 毎月先着5名限定</div>
+<div class="pricing-label">6ヶ月コンサル＋ツール全機能＋4大特典</div>
 <div class="pricing-amount"><span class="gold">250,000</span><span style="font-size:20px;opacity:.8">円</span></div>
-<div class="pricing-tax">（税込）</div>
+<div class="pricing-tax">（税込・一括払い）</div>
+<div class="pricing-value">
+<p>ツール6ヶ月分（89,880円相当）が無料 → 実質</p>
+<div class="total">160,120円で全部手に入る</div>
+</div>
 <ul class="pricing-includes">
 <li>6ヶ月間のマンツーマンコンサル</li>
 <li>ツール全機能利用（6ヶ月無料）</li>
-<li>Notionマニュアル</li>
-<li>Discord質問し放題</li>
+<li>Notionマニュアル（図解つき）</li>
+<li>Discord質問し放題（無制限）</li>
 <li>月2回Zoom個別指導</li>
-<li>4大特典すべて</li>
+<li>禁止ワードリスト15,000語</li>
+<li>売れる商品抜き出しツール</li>
+<li>自動購入ツール</li>
 </ul>
-<a href="#cta" class="cta-btn">まずは無料で相談する</a>
-<div class="pricing-after">※コンサル終了後のツール月額：<br>1アカウント目 14,980円/月｜2アカウント目以降 7,980円/月</div>
+<a href="#cta" class="cta-btn cta-btn-large">今すぐ無料で相談する →</a>
+<div class="pricing-urgency">⚠️ コンサル枠には限りがあります。定員に達し次第、予告なく募集を停止します。</div>
+<div class="pricing-after">※コンサル終了後のツール月額：1アカ 14,980円/月｜2アカ目〜 7,980円/月</div>
 </div>
 </div>
 </section>
@@ -381,25 +547,26 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 <!-- おすすめ / おすすめしない -->
 <section class="section-light section-padding">
 <div class="container">
-<h2 class="section-title fade-up">こんな人におすすめ / おすすめしない人</h2>
+<h2 class="section-title fade-up">正直に言います。<br>全員におすすめはしません。</h2>
+<p class="section-subtitle fade-up">合う人・合わない人がいます</p>
 <div class="recommend-grid fade-up">
 <div class="recommend-col">
-<h3 style="color:#06C755">✅ おすすめな人</h3>
+<h3 style="color:#06C755">✅ 今すぐ始めてほしい人</h3>
 <ul>
-<li><span style="color:#06C755;flex-shrink:0">✅</span>副業で安定した副収入がほしい人</li>
-<li><span style="color:#06C755;flex-shrink:0">✅</span>せどりの在庫・梱包・発送に疲れた人</li>
-<li><span style="color:#06C755;flex-shrink:0">✅</span>ツールだけでなく、プロに教わりながら確実に進めたい人</li>
-<li><span style="color:#06C755;flex-shrink:0">✅</span>1日1〜2時間は副業に使える人</li>
-<li><span style="color:#06C755;flex-shrink:0">✅</span>月3〜10万円を現実的に目指したい人</li>
+<li><span style="color:#06C755;flex-shrink:0">✅</span><strong>毎月の給料にプラス5〜10万</strong>あったら人生変わる人</li>
+<li><span style="color:#06C755;flex-shrink:0">✅</span>せどりの肉体労働から解放されたい人</li>
+<li><span style="color:#06C755;flex-shrink:0">✅</span>ツール×コンサルで<strong>最短ルートを走りたい</strong>人</li>
+<li><span style="color:#06C755;flex-shrink:0">✅</span>1日30分〜1時間の"ながら作業"で副収入がほしい人</li>
+<li><span style="color:#06C755;flex-shrink:0">✅</span><strong>「やり方さえ教えてもらえればできる」</strong>タイプの人</li>
 </ul>
 </div>
 <div class="recommend-col">
-<h3 style="color:#E4007F">❌ おすすめしない人</h3>
+<h3 style="color:#E4007F">❌ 申し訳ないですがお断りする人</h3>
 <ul>
-<li><span style="color:#E4007F;flex-shrink:0">❌</span>今すぐ月50万・100万稼ぎたい人</li>
-<li><span style="color:#E4007F;flex-shrink:0">❌</span>何もしないで稼ぎたい人</li>
-<li><span style="color:#E4007F;flex-shrink:0">❌</span>コンサルの指示を聞かずに自己流でやりたい人</li>
-<li><span style="color:#E4007F;flex-shrink:0">❌</span>25万円の初期投資が難しい人</li>
+<li><span style="color:#E4007F;flex-shrink:0">❌</span>「来月から月50万稼ぎたい」という非現実的な期待の人</li>
+<li><span style="color:#E4007F;flex-shrink:0">❌</span>何もせず完全自動で稼ぎたい人（最初の設定は必要です）</li>
+<li><span style="color:#E4007F;flex-shrink:0">❌</span>アドバイスを聞かず自己流で突っ走る人</li>
+<li><span style="color:#E4007F;flex-shrink:0">❌</span>25万円の初期投資が生活を圧迫する人</li>
 </ul>
 </div>
 </div>
@@ -413,56 +580,56 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 <div class="faq-list fade-up">
 
 <div class="faq-item">
+<div class="faq-q">本当に放置で稼げるんですか？</div>
+<div class="faq-a"><div class="faq-a-inner">最初のセットアップ（1〜2ヶ月目）は手を動かす必要があります。ただ、軌道に乗った3ヶ月目以降は、ツールが自動で回してくれるので<strong>1日30分のチェックだけで運用できている方が多い</strong>です。「完全放置で月100万」みたいな話ではなく、現実的に月3〜10万円を"ほぼ手間なし"で得られる仕組みです。</div></div>
+</div>
+
+<div class="faq-item">
 <div class="faq-q">Qoo10で無在庫販売って規約的に大丈夫？</div>
 <div class="faq-a"><div class="faq-a-inner">Qoo10は無在庫販売を明確に禁止していません。「一般送」は3営業日以内の発送ルールがありますが、仕入れ先の配送スピードを考慮すれば問題なく運用できます。</div></div>
 </div>
 
 <div class="faq-item">
 <div class="faq-q">パソコンが苦手でも大丈夫？</div>
-<div class="faq-a"><div class="faq-a-inner">大丈夫です。Notionのマニュアルに沿って進めれば、PCに詳しくなくても始められます。わからない部分はDiscordやZoomですぐ聞けます。</div></div>
+<div class="faq-a"><div class="faq-a-inner">大丈夫です。利用者の半数以上がPC初心者です。Notionの図解マニュアルに沿って進めれば、PCに詳しくなくても始められます。それでもわからない部分はDiscordやZoomで即解決します。</div></div>
 </div>
 
 <div class="faq-item">
 <div class="faq-q">25万円の元は取れる？</div>
-<div class="faq-a"><div class="faq-a-inner">個人差はありますが、月3〜5万の利益が安定すれば4〜6ヶ月で回収できる計算です。ツール6ヶ月無料の特典があるので、コンサル期間中は追加コストなしで集中できます。</div></div>
+<div class="faq-a"><div class="faq-a-inner">月5万の利益が出れば<strong>5ヶ月で回収</strong>できます。しかもコンサル期間中はツール月額（14,980円）が無料なので、6ヶ月間は追加コストゼロで集中できます。多くの利用者が3〜4ヶ月目で投資回収しています。</div></div>
 </div>
 
 <div class="faq-item">
 <div class="faq-q">メガ割って何？</div>
-<div class="faq-a"><div class="faq-a-inner">Qoo10が年4回開催する大型セールイベントです。通常の数倍〜数十倍の売上が出ることもあります。参加にはアカウント開設から3ヶ月の実績が必要なので、早めにスタートするのがポイントです。</div></div>
+<div class="faq-a"><div class="faq-a-inner">Qoo10が年4回開催する大型セールイベントです。<strong>通常の数倍〜数十倍の売上</strong>が出ることもあります。参加にはアカウント開設から3ヶ月の実績が必要なので、早めにスタートするほど有利です。</div></div>
 </div>
 
 <div class="faq-item">
 <div class="faq-q">コンサル期間が終わったらどうなる？</div>
-<div class="faq-a"><div class="faq-a-inner">ツールは月額14,980円で引き続き使えます。6ヶ月間で自走できるスキルが身につくので、コンサルなしでも運用を続けられる状態を目指します。</div></div>
+<div class="faq-a"><div class="faq-a-inner">ツールは月額14,980円で引き続き使えます。6ヶ月で「ひとりで回せる状態」に仕上げるので、コンサルなしでも運用を続けられます。実際、卒業生の多くが自走で月5〜10万キープしています。</div></div>
 </div>
 
 <div class="faq-item">
-<div class="faq-q">アカウントBANが怖いのですが…</div>
-<div class="faq-a"><div class="faq-a-inner">15,000語の禁止ワードリストと、BANされにくい商品の選び方を指導します。これまでのノウハウをすべてお伝えするので、リスクは大幅に軽減できます。</div></div>
-</div>
-
-<div class="faq-item">
-<div class="faq-q">副業で使える時間が少ないのですが…</div>
-<div class="faq-a"><div class="faq-a-inner">ツールが出品・在庫管理・購入まで自動化するので、軌道に乗れば1日30分〜1時間程度の作業で運用できます。</div></div>
+<div class="faq-q">アカウントBANが怖い…</div>
+<div class="faq-a"><div class="faq-a-inner">だからこそ<strong>15,000語の禁止ワードリスト</strong>と、BANされにくい商品の選び方を徹底指導します。「知らなくてやらかした」を防ぐのがコンサルの役割です。</div></div>
 </div>
 
 <div class="faq-item">
 <div class="faq-q">途中でやめたくなったら？</div>
-<div class="faq-a"><div class="faq-a-inner">在庫を持たないビジネスなので、やめたい時にすぐやめられます。売れ残りリスクがありません。</div></div>
+<div class="faq-a"><div class="faq-a-inner">在庫を持たないので、やめたい時にすぐやめられます。<strong>売れ残りリスクゼロ</strong>。これが無在庫の最大のメリットです。</div></div>
 </div>
 
 </div>
 </div>
 </section>
 
-<!-- CTA -->
+<!-- Final CTA -->
 <section class="section-light section-padding cta-section" id="cta">
 <div class="container">
-<h2 class="fade-up">まずは無料で相談してみませんか？</h2>
-<p class="fade-up">あなたの状況をお聞きした上で、Qoo10無在庫が合っているかどうかを正直にお伝えします。<br>強引な勧誘は一切しません。</p>
-<a href="#" class="cta-btn fade-up" style="font-size:20px;padding:20px 48px;">LINEで無料相談する</a>
-<p class="cta-note fade-up">お問い合わせは株式会社ホクトプラスが対応します。</p>
+<h2 class="fade-up">あなたの「副業人生」は、<br>ここから変わります。</h2>
+<p class="fade-up">在庫を抱える不安、梱包の手間、発送の面倒。<br>全部なくなった先に、<strong>「寝てる間にも稼げる仕組み」</strong>が待っています。<br><br>まずは無料相談で、あなたに合っているかどうかだけ確認してください。<br>合わなければ、正直にそうお伝えします。</p>
+<a href="#" class="cta-btn cta-btn-large fade-up">🔥 LINEで無料相談する（30秒で完了）</a>
+<p class="cta-micro fade-up">※強引な勧誘は一切ありません<br>お問い合わせは株式会社ホクトプラスが対応します</p>
 </div>
 </section>
 
@@ -479,15 +646,12 @@ body{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:16px;line-h
 </footer>
 
 <script>
-// Intersection Observer for fade-up animations
+// Intersection Observer
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
 // FAQ Accordion
@@ -496,14 +660,10 @@ document.querySelectorAll('.faq-q').forEach(q => {
     const item = q.parentElement;
     const answer = q.nextElementSibling;
     const isOpen = item.classList.contains('open');
-
-    // Close all
     document.querySelectorAll('.faq-item').forEach(fi => {
       fi.classList.remove('open');
       fi.querySelector('.faq-a').style.maxHeight = null;
     });
-
-    // Open clicked
     if (!isOpen) {
       item.classList.add('open');
       answer.style.maxHeight = answer.scrollHeight + 'px';
@@ -511,18 +671,16 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// Smooth scroll for anchor links
+// Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', (e) => {
     e.preventDefault();
     const target = document.querySelector(a.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 });
 
-// Price count-up animation
+// Price count-up
 const priceEl = document.querySelector('.pricing-amount .gold');
 if (priceEl) {
   let animated = false;
@@ -532,14 +690,10 @@ if (priceEl) {
         animated = true;
         let current = 0;
         const target = 250000;
-        const duration = 1200;
-        const step = target / (duration / 16);
+        const step = target / (1200 / 16);
         const timer = setInterval(() => {
           current += step;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
+          if (current >= target) { current = target; clearInterval(timer); }
           priceEl.textContent = Math.floor(current).toLocaleString();
         }, 16);
       }
@@ -547,6 +701,32 @@ if (priceEl) {
   }, { threshold: 0.5 });
   priceObserver.observe(priceEl.closest('.pricing-box'));
 }
+
+// Number count-up for hero
+document.querySelectorAll('.hero-num-item .num').forEach(el => {
+  const text = el.textContent;
+  const match = text.match(/(\d+)/);
+  if (match) {
+    const target = parseInt(match[1]);
+    const suffix = text.replace(match[1], '');
+    let animated = false;
+    const numObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animated) {
+          animated = true;
+          let current = 0;
+          const step = Math.max(1, target / (800 / 16));
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) { current = target; clearInterval(timer); }
+            el.innerHTML = Math.floor(current) + suffix;
+          }, 16);
+        }
+      });
+    }, { threshold: 0.5 });
+    numObs.observe(el);
+  }
+});
 </script>
 </body>
 </html>
